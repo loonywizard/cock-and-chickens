@@ -1,0 +1,56 @@
+/**
+ * Creates MouseController
+ *
+ * Controller allows us to subscribe for mouse position changes
+ * and for mouse clicks
+ * */
+export default function createMouseController() {
+  let mouseCoordinates = {
+    x: 0,
+    y: 0
+  };
+  const moveSubscribers = [];
+  const clickSubscribers = [];
+  let isMouseDown = false;
+
+  const subscribeForMouseMove = (callback) => {
+    moveSubscribers.push(callback);
+  };
+
+  const subscribeForMouseClick = (callback) => {
+    clickSubscribers.push(callback);
+  };
+
+  const getMouseCoordinates = () => ({ ...mouseCoordinates });
+  const getIsMouseDown = () => isMouseDown;
+
+  function setMouseCoordinates(event) {
+    mouseCoordinates.x = event.clientX;
+    mouseCoordinates.y = event.clientY;
+  }
+
+  function handleMouseMove(event) {
+    setMouseCoordinates(event);
+    moveSubscribers.forEach(cb => cb());
+  }
+
+  function handleMouseDown() {
+    isMouseDown = true;
+    clickSubscribers.forEach(cb => cb());
+  }
+
+  function handleMouseUp() {
+    isMouseDown = false;
+  }
+
+  window.addEventListener('mousedown', handleMouseDown);
+  window.addEventListener('mouseup', handleMouseUp);
+  window.addEventListener('mousemove', handleMouseMove);
+
+  return {
+    getMouseCoordinates,
+    getIsMouseDown,
+    subscribeForMouseMove,
+    subscribeForMouseClick,
+  };
+}
