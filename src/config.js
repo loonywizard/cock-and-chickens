@@ -4,13 +4,13 @@ const canvas = {
 };
 
 const player = {
-  textureUrl: 'images/red.png',
+  textureUrl: 'images/player.png',
   position: { x: 150, y: canvas.height - 80 },
   walkingArea: {
     x: { from: 0, to: canvas.width },
     y: { from: canvas.height - 200, to: canvas.height },
   },
-  size: { x: 50, y: 50 },
+  size: { x: 46, y: 80 },
   maxSpeed: 0.65,
   radius: 25,
 };
