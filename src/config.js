@@ -50,8 +50,10 @@ const config = {
     textureUrl: 'images/gray.png',
   },
   coin: {
-    textureUrl: 'images/red.png',
-    size: { x: 25, y: 25 },
+    textureUrl: 'images/coin.png',
+    size: { x: 55, y: 45 },
+    spritesCount: 6,
+    spriteChangeTime: 100,
     speed: 0.45,
   },
 };

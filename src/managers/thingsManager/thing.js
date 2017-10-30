@@ -27,16 +27,29 @@ export default function createThing(args) {
     canvas,
     angle,
     speed,
+    spritesCount,
+    spriteChangeTime,
   } = args;
+  let currentSprite = 0;
+  let timeScinceSpriteWasChanged = 0;
 
   const update = (deltaTime) => {
     position.x += Math.cos(angle) * speed * deltaTime;
     position.y += Math.sin(angle) * speed * deltaTime;
+
+    timeScinceSpriteWasChanged += deltaTime;
+    if (timeScinceSpriteWasChanged >= spriteChangeTime) {
+      timeScinceSpriteWasChanged = 0;
+      currentSprite = (currentSprite + 1) % spritesCount;
+    }
   };
 
   const draw = () => {
-    canvas.ctx.drawImage(
-      texture, position.x - size.x / 2, position.y - size.y / 2, size.x, size.y
+    const { ctx } = canvas;
+    ctx.drawImage(
+      texture,
+      size.x * currentSprite, 0, size.x, size.y,
+      position.x - size.x / 2, position.y - size.y / 2, size.x, size.y,
     );
   };
 

@@ -111,7 +111,6 @@ export default function createEnemiesManager(args) {
       speed = config[type].speed + gameTime / 10e5 < config[type].maxSpeed ?
         config[type].speed + gameTime / 10e5 : config[type].maxSpeed;
       freeTracks = getFreeTracks(speed);
-      console.log(freeTracks, speed, type)
     }
 
     const track = freeTracks[getRandomInt(0, freeTracks.length - 1)];
