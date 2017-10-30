@@ -45,9 +45,9 @@ const config = {
     health: 5,
   },
   ammunition: {
-    size: { x: 25, y: 25 },
+    size: { x: 60, y: 57 },
     speed: 0.45,
-    textureUrl: 'images/gray.png',
+    textureUrl: 'images/shotgun.png',
   },
   coin: {
     textureUrl: 'images/coin.png',
