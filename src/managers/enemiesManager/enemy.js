@@ -7,15 +7,29 @@ export default function createEnemy(args) {
     id,
     radius,
     track,
+    spritesCount,
+    spriteChangeTime,
   } = args;
   let { health } = args;
+  let currentSprite = 0;
+  let timeScinceSpriteWasChanged = 0;
 
   const draw = (ctx) => {
-    ctx.drawImage(texture, position.x - size.x / 2, position.y - size.y / 2, size.x, size.y);
+    ctx.drawImage(
+      texture,
+      size.x * currentSprite, 0, size.x, size.y,
+      position.x - size.x / 2, position.y - size.y / 2, size.x, size.y,
+    );
   };
 
   const update = (deltaTime) => {
     position.y += speed * deltaTime;
+
+    timeScinceSpriteWasChanged += deltaTime;
+    if (timeScinceSpriteWasChanged >= spriteChangeTime) {
+      timeScinceSpriteWasChanged = 0;
+      currentSprite = (currentSprite + 1) % spritesCount;
+    }
   };
 
   const decreaseHealth = (hp = 1) => {

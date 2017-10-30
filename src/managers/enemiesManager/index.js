@@ -70,7 +70,6 @@ export default function createEnemiesManager(args) {
   function getFreeTracks(speed) {
     const tracks = [];
     for (let i = 1; i <= 10; i++) {
-      console.log('is track free: ', isTrackFree(i, speed), 'enemies: ', enemies);
       if (isTrackFree(i, speed)) {
         tracks.push(i);
       }
