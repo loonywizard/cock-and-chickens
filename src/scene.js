@@ -9,6 +9,7 @@ import createWeaponsManager from './managers/weaponsManager';
 import createIdsManager from './managers/idsManager';
 import createScoreManager from './managers/scoreManager';
 import createInformationBoard from './informationBoard';
+import createAim from './aim';
 import createCanvas from './canvas';
 import createPlayer from './player';
 import { stopGame } from './actions';
@@ -31,6 +32,7 @@ export default function Scene(store) {
   let idsManager;
   let scoreManager;
   let informationBoard;
+  let aim;
 
   this.init = function (textures) {
     sceneDiv.innerHTML = '';
@@ -88,6 +90,13 @@ export default function Scene(store) {
       weaponsManager,
       scoreManager,
     });
+
+    aim = createAim({
+      ...config.aim,
+      texture: textures.aim,
+      mouseController,
+      canvas,
+    });
   };
 
   function gameLoop() {
@@ -99,11 +108,13 @@ export default function Scene(store) {
     enemiesManager.update(deltaTime);
     thingsManager.updateThings(deltaTime);
     player.update(deltaTime);
+    aim.update();
 
     enemiesManager.drawEnemies();
     thingsManager.drawThings();
     player.draw();
     informationBoard.displayInfo();
+    aim.draw();
 
     if (enemiesManager.hasEnemyCrossedCanvas()) {
       store.dispatch(stopGame(scoreManager.getScore()));

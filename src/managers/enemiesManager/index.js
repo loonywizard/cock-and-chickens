@@ -60,7 +60,6 @@ export default function createEnemiesManager(args) {
   const ENEMY_TYPES = {
     CHICKEN: 'chicken',
     GRAY_CHICKEN: 'grayChicken',
-    BIG_CHICKEN: 'bigChicken',
   };
 
   function chooseTrackForNewEnemy() {

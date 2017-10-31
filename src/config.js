@@ -36,14 +36,6 @@ const config = {
     maxSpeed: 0.45,
     health: 1,
   },
-  bigChicken: {
-    textureUrl: 'images/red.png',
-    size: { x: 100, y: 100 },
-    radius: 50,
-    speed: 0.02,
-    maxSpeed: 0.05,
-    health: 5,
-  },
   ammunition: {
     size: { x: 60, y: 57 },
     speed: 0.45,
@@ -56,6 +48,10 @@ const config = {
     spriteChangeTime: 100,
     speed: 0.45,
   },
+  aim: {
+    textureUrl: 'images/aim.png',
+    size: { x: 36, y: 36 },
+  }
 };
 
 export default config;
