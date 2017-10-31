@@ -219,15 +219,27 @@ export default function createEnemiesManager(args) {
     });
 
     if (closestIntersection) {
-      const enemy = findEnemyById(closestIntersection.enemyId);
-      enemy.decreaseHealth();
-      if (enemy.getHealth() <= 0) {
-        const countOfThingsToCreate = getRandomInt(1, 5);
-        for (let i = 0; i < countOfThingsToCreate; i += 1) {
-          thingsManager.addThing({ position: enemy.getPosition() });
-        }
-        deleteEnemyById(closestIntersection.enemyId);
+      return  {
+        enemyId: closestIntersection.enemyId,
+        enemyPosition: findEnemyById(closestIntersection.enemyId).getPosition(),
+      };
+    } else {
+      return null;
+    }
+  };
+
+  const shotToEnemy = (enemyId) => {
+    const enemy = findEnemyById(enemyId);
+
+    if (!enemy) return;
+
+    enemy.decreaseHealth();
+    if (enemy.getHealth() <= 0) {
+      const countOfThingsToCreate = getRandomInt(1, 5);
+      for (let i = 0; i < countOfThingsToCreate; i += 1) {
+        thingsManager.addThing({ position: enemy.getPosition() });
       }
+      deleteEnemyById(enemyId);
     }
   };
 
@@ -238,5 +250,6 @@ export default function createEnemiesManager(args) {
     update,
     checkCollisionsWithBullet,
     hasEnemyCrossedCanvas,
+    shotToEnemy,
   };
 }

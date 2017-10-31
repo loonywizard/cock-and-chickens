@@ -51,6 +51,9 @@ const config = {
   aim: {
     textureUrl: 'images/aim.png',
     size: { x: 36, y: 36 },
+  },
+  bullet: {
+    speed: 5,
   }
 };
 

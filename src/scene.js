@@ -8,6 +8,7 @@ import createStrikeManager from './managers/strikeManager';
 import createWeaponsManager from './managers/weaponsManager';
 import createIdsManager from './managers/idsManager';
 import createScoreManager from './managers/scoreManager';
+import createBulletsManager from './managers/bulletsManager';
 import createInformationBoard from './informationBoard';
 import createAim from './aim';
 import createCanvas from './canvas';
@@ -29,6 +30,7 @@ export default function Scene(store) {
   let thingsManager;
   let strikeManager;
   let weaponsManager;
+  let bulletsManager;
   let idsManager;
   let scoreManager;
   let informationBoard;
@@ -77,12 +79,18 @@ export default function Scene(store) {
       scoreManager,
     });
 
+    bulletsManager = createBulletsManager({
+      canvas,
+      idsManager,
+    });
+
     strikeManager = createStrikeManager({
       mouseController,
       getPlayerAngle: player.getAngle,
       getPlayerPosition: player.getPosition,
       enemiesManager,
       weaponsManager,
+      bulletsManager,
     });
 
     informationBoard = createInformationBoard({
@@ -108,10 +116,12 @@ export default function Scene(store) {
     enemiesManager.update(deltaTime);
     thingsManager.updateThings(deltaTime);
     player.update(deltaTime);
+    bulletsManager.updateBullets(deltaTime);
     aim.update();
 
     enemiesManager.drawEnemies();
     thingsManager.drawThings();
+    bulletsManager.drawBullets();
     player.draw();
     informationBoard.displayInfo();
     aim.draw();
