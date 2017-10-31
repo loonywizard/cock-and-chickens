@@ -21,7 +21,7 @@ const config = {
   chicken: {
     textureUrl: 'images/white_chicken_texture.png',
     size: { x: 50, y: 61 },
-    spritesCount: 3,
+    spritesCount: 2,
     spriteChangeTime: 250,
     speed: 0.05,
     maxSpeed: 0.25,
@@ -30,7 +30,7 @@ const config = {
   grayChicken: {
     textureUrl: 'images/gray_chicken_texture.png',
     size: { x: 50, y: 61 },
-    spritesCount: 3,
+    spritesCount: 2,
     spriteChangeTime: 200,
     speed: 0.15,
     maxSpeed: 0.45,
