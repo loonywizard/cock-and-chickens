@@ -1,0 +1,1 @@
+export THING_TYPES from './thingTypes';

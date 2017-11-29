@@ -1,19 +1,24 @@
+/*
+* Creates WeaponsManager
+*
+* WeaponsManager serves ammunition count and has methods for managing ammunition count
+*
+* @param {Number} args.ammunitionCount
+* */
 export default function createWeaponsManager(args) {
-  const weapon = {
-    ammunitionCount: args.ammunitionCount,
+  let { ammunitionCount } = args;
+
+  const addAmmunition = (countOfWeapons) => {
+    ammunitionCount += countOfWeapons;
   };
 
-  const addAmmunition = (ammunitionCount) => {
-    weapon.ammunitionCount += ammunitionCount;
+  const useAmmunition = (countOfWeapons = 1) => {
+    ammunitionCount -= countOfWeapons;
   };
 
-  const useAmmunition = (ammunitionCount = 1) => {
-    weapon.ammunitionCount -= ammunitionCount;
-  };
+  const hasAmmunition = () => ammunitionCount > 0;
 
-  const hasAmmunition = () => weapon.ammunitionCount > 0;
-
-  const getAmmunitionCount = () => weapon.ammunitionCount;
+  const getAmmunitionCount = () => ammunitionCount;
 
   return {
     addAmmunition,

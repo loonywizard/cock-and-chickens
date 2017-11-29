@@ -1,21 +1,17 @@
 /**
- * Creates player
+ * Creates Player
  *
- * @param args.position: position of the center of player
- * @param args.size
- * @param args.keyboardController
- * @param args.cameraController
- * @param args.screenSizeController
- * @param args.mouseController
- * @param args.subjectsManager
- * @param args.thingsManager
- * @param args.canvas
- * @param args.texture
- * @param args.maxSpeed: player can stand on one place or move with
- *  certain speed, the speed will be equal to maxSpeed
- * @param args.radius: we need radius to handle collisions, we do not
- *  handle collisions of player itself, we handle collisions of circle
- *  at the center of the player
+ * @param {Object} args.position
+ * @param {Object} args.size
+ * @param {KeyboardController} args.keyboardController
+ * @param {MouseController} args.mouseController
+ * @param {Canvas} args.canvas
+ * @param {Texture} args.texture
+ * @param {Number} args.maxSpeed
+ * @param {Object} args.walkingArea
+ * @param {ThingsManager} args.thingsManager
+ * @param {WeaponsManager} args.weaponsManager
+ * @param {ScoreManager} args.scoreManager
  * */
 export default function createPlayer(args) {
   const {
@@ -59,13 +55,6 @@ export default function createPlayer(args) {
     ctx.rotate(angle + Math.PI / 2);
     ctx.drawImage(texture, -size.x / 2, -size.y / 2, size.x, size.y);
     ctx.restore();
-
-    /*
-    ctx.beginPath();
-    ctx.moveTo(position.x, position.y);
-    ctx.lineTo(position.x + Math.cos(angle) * 1000, position.y + Math.sin(angle) * 1000)
-    ctx.stroke();
-    */
   };
 
   const update = (deltaTime) => {

@@ -1,6 +1,8 @@
 /**
  * Creates KeyboardController
  *
+ * Controller can check if key is pressed or not
+ *
  * Example of usage: keyboardController.isKeyPressed('A')
  * */
 export default function createKeyboardController() {
@@ -11,17 +13,17 @@ export default function createKeyboardController() {
     68: 'D',
   };
 
-  const states = {};
+  const keyStates = {};
 
   window.addEventListener('keydown', function(event) {
-    states[keyCodes[event.keyCode]] = true;
+    keyStates[keyCodes[event.keyCode]] = true;
   });
 
   window.addEventListener('keyup', function(event) {
-    states[keyCodes[event.keyCode]] = false;
+    keyStates[keyCodes[event.keyCode]] = false;
   });
 
-  const isKeyPressed = (keyName) => !!states[keyName];
+  const isKeyPressed = (keyName) => !!keyStates[keyName];
 
   return {
     isKeyPressed,

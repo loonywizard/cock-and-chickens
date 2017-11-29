@@ -33,10 +33,12 @@ export default function TexturesLoader(store) {
       ammunition: new Image(),
       aim: new Image(),
     };
+
     for (let key in textures) {
       textures[key].src = config[key].textureUrl;
       textures[key].onload = incrementCountOfLoaedTextures;
     }
+
     return textures;
   }
 }

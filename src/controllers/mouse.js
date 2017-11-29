@@ -1,16 +1,19 @@
 /**
  * Creates MouseController
  *
- * Controller allows us to subscribe for mouse position changes
- * and for mouse clicks
+ * Controller allows us to subscribe for mouse position changes and mouse clicks
+ *
+ * here mouseCoordinates - dx and dy in pixels between top left corner of page and mouse
  * */
 export default function createMouseController() {
   let mouseCoordinates = {
     x: 0,
     y: 0
   };
+
   const moveSubscribers = [];
   const clickSubscribers = [];
+
   let isMouseDown = false;
 
   const subscribeForMouseMove = (callback) => {

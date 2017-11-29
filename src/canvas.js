@@ -1,12 +1,10 @@
 /**
  * Creates canvas and adds it to parent html tag
  *
- * @param args.screenSizeController
- *
- * @returns object, that consist of
- *  ctx: 2d context for drawings
- *  clear: method for clearing the canvas
- *  getOffset: returns X and Y offset of canvas relatively to window
+ * @param {ScreenSizeController} args.screenSizeController
+ * @param {Number} args.height
+ * @param {Number} args.width
+ * @param {DOMNode} args.parent
  * */
 export default function createCanvas(args) {
   const { screenSizeController, height, width, parent } = args;
@@ -44,11 +42,13 @@ export default function createCanvas(args) {
   };
 
   const getOffset = () => ({ ...offset });
+
   const getRealSize = () => {
     const x = canvas.clientWidth;
     const y = canvas.clientHeight;
     return { x, y };
   };
+
   const getGameSize = () => {
     const x = canvas.width;
     const y = canvas.height;

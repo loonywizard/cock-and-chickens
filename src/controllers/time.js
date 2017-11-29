@@ -1,7 +1,7 @@
 /**
  * Creates TimeController
  *
- * Controller allows us to iterate time in game loop
+ * Controller counts delta time between game loop iterations
  * */
 export default function createTimeController() {
   let currentTime;
@@ -22,14 +22,12 @@ export default function createTimeController() {
   };
 
   const getDeltaTime = () => deltaTime;
-  const getCurrentTime = () => new Date().getTime();
   const getGameTime = () => gameTime;
 
   return {
     start,
     makeTimeIteration,
     getDeltaTime,
-    getCurrentTime,
     getGameTime,
   };
 }

@@ -1,3 +1,5 @@
+import { THING_TYPES } from './consts';
+
 const canvas = {
   width: 900,
   height: 800,
@@ -36,12 +38,12 @@ const config = {
     maxSpeed: 0.45,
     health: 1,
   },
-  ammunition: {
+  [THING_TYPES.AMMUNITION]: {
     size: { x: 60, y: 57 },
     speed: 0.45,
     textureUrl: 'images/shotgun.png',
   },
-  coin: {
+  [THING_TYPES.COIN]: {
     textureUrl: 'images/coin.png',
     size: { x: 55, y: 45 },
     spritesCount: 6,

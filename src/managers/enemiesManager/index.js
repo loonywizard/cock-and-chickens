@@ -1,8 +1,10 @@
 import createEnemy from './enemy';
-import config from './../../config';
-import { getRandomInt } from './../../utils/random';
+import config from '../../config';
+import { getRandomInt } from '../../utils/random';
 
 // see http://ncase.me/sight-and-light/
+// TODO: refactor that function
+// TODO: next comment this file
 function findIntersectionBetweenRayAndSegment(ray, segment) {
   // RAY in parametric: Point + Direction*T1
   const r_px = ray.a.x;

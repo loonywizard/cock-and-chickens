@@ -1,21 +1,19 @@
 /**
- * Creates a thing, it can be an ammunition, some paper tips, etc,
- * things are animated, they do small movements from top to down
- * for small distances
- * player can pick up a thing if he go throw it or if he clicks on it
- * if mouse is over the thing, mouse cursor has type "hand"
- * 
- * @param args.id
- * @param args.position: position of left top corner of a thing
- * @param args.size: size of the thing
- * @param args.effect: an object, that consists of an effect of that thing,
- *  see config for things for examples
- * @param args.textureUrl: url to texture for using as src for texture
- * @param args.canvas
- * @param args.cameraController
- * @param args.mouseController
- * @param args.animationSpeed
- * @param args.animationDistance: an Y distance for position changes
+ * Creates a Thing
+ *
+ * Thing is an entity, that player can catch, for example, it can be coin or ammunition
+ * Thing has an animation, we see sprites that change each other with some time
+ *
+ * @param {Number} args.id
+ * @param {Object} args.position
+ * @param {Object} args.size
+ * @param {Image} args.texture
+ * @param {Object} args.effect
+ * @param {Canvas} args.canvas
+ * @param {Number} args.angle
+ * @param {Number} args.speed
+ * @param {Number} args.spritesCount
+ * @param {Number} args.spritesChangeTime
  * */
 export default function createThing(args) {
   const {
@@ -53,8 +51,8 @@ export default function createThing(args) {
     );
   };
 
-  const use = () => effect;
   const getId = () => id;
+  const use = () => ({ ...effect });
   const getPosition = () => ({ ...position });
   const getSize = () => ({ ...size });
 
