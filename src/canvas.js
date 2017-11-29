@@ -26,13 +26,13 @@ export default function createCanvas(args) {
       canvas.style.height = '100%';
       canvas.style.width = 'auto';
       offset.x = (screenSize.x - width * screenSize.y / height) / 2;
-      offset.y = 0;
     } else {
       canvas.style.width = '100%';
       canvas.style.height = 'auto';
       offset.x = 0;
-      offset.y = (screenSize.y - height * screenSize.x / width) / 2;
     }
+
+    offset.y = 0;
   }
 
   // We should change canvas size each time screen size has changed
@@ -40,8 +40,7 @@ export default function createCanvas(args) {
   changeCanvasSize();
 
   const clear = () => {
-    ctx.fillStyle = '#4fa1ff';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
   };
 
   const getOffset = () => ({ ...offset });

@@ -2,12 +2,15 @@ html, body {
   overflow: hidden;
   margin: 0;
   padding: 0;
+  background-image: url(./images/background.jpg);
+  background-repeat: repeat repeat;
+  background-size: inherit;
 }
 
 canvas {
   position: absolute;
   left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  top: 0;
+  transform: translate(-50%, 0);
   cursor: none;
 }
