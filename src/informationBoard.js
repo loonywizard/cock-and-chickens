@@ -1,12 +1,12 @@
-/*
-* Creates InformationBoard
-*
-* InformationBoard displays information about game: score and ammunition count
-*
-* @param {Canvas} args.canvas
-* @param {WeaponsManager} args.weaponsManager
-* @param {ScoreManager} args.scoreManager
-* */
+/**
+ * Creates InformationBoard
+ *
+ * InformationBoard displays information about game: score and ammunition count
+ *
+ * @param {Canvas} args.canvas
+ * @param {WeaponsManager} args.weaponsManager
+ * @param {ScoreManager} args.scoreManager
+ * */
 export default function createInformationBoard(args) {
   const {
     canvas,

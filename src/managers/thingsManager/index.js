@@ -6,16 +6,16 @@ import {
 } from '../../utils/random';
 import { THING_TYPES } from '../../consts';
 
-/*
-* Creates ThingsManager
-*
-* ThingsManager manages all things in the game,
-* it can update, draw them, find collisions with player
-*
-* @param {Canvas} args.canvas
-* @param {Object} args.textures
-* @param {IdsManager} args.idsManager
-* */
+/**
+ * Creates ThingsManager
+ *
+ * ThingsManager manages all things in the game,
+ * it can update, draw them, find collisions with player
+ *
+ * @param {Canvas} args.canvas
+ * @param {Object} args.textures
+ * @param {IdsManager} args.idsManager
+ * */
 export default function createThingsManager(args) {
   const {
     canvas,

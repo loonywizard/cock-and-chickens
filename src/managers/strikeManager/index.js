@@ -1,17 +1,17 @@
 import config from '../../config';
 
-/*
-* Creates StrikeManager
-*
-* StrikeManager creates bullets, when player clicks on the page
-*
-* @param {Object} args.mouseController
-* @param {Function} args.getPlayerAngle
-* @param {Function} args.getPlayerPosition
-* @param {Object} args.enemiesManager
-* @param {Object} args.weaponsManager
-* @param {Object} args.bulletsManager
-* */
+/**
+ * Creates StrikeManager
+ *
+ * StrikeManager creates bullets, when player clicks on the page
+ *
+ * @param {Object} args.mouseController
+ * @param {Function} args.getPlayerAngle
+ * @param {Function} args.getPlayerPosition
+ * @param {Object} args.enemiesManager
+ * @param {Object} args.weaponsManager
+ * @param {Object} args.bulletsManager
+ * */
 export default function createStrikeManager(args) {
   const {
     mouseController,

@@ -1,10 +1,10 @@
-/*
-* Creates WeaponsManager
-*
-* WeaponsManager serves ammunition count and has methods for managing ammunition count
-*
-* @param {Number} args.ammunitionCount
-* */
+/**
+ * Creates WeaponsManager
+ *
+ * WeaponsManager serves ammunition count and has methods for managing ammunition count
+ *
+ * @param {Number} args.ammunitionCount
+ * */
 export default function createWeaponsManager(args) {
   let { ammunitionCount } = args;
 

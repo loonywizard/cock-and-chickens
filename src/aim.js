@@ -1,13 +1,13 @@
-/*
-* Creates Aim
-*
-* Aim center coordinates are mouse coordinates
-*
-* @param {Texture} args.texture
-* @param {Object} args.size
-* @param {MouseController} args.mouseController
-* @param {Canvas} args.canvas
-* */
+/**
+ * Creates Aim
+ *
+ * Aim center coordinates are mouse coordinates
+ *
+ * @param {Texture} args.texture
+ * @param {Object} args.size
+ * @param {MouseController} args.mouseController
+ * @param {Canvas} args.canvas
+ * */
 export default function createAim(args) {
   const {
     texture,

@@ -1,8 +1,8 @@
-/*
-* Creates IdsManager
-*
-* IdsManager creates unique ids for entities
-* */
+/**
+ * Creates IdsManager
+ *
+ * IdsManager creates unique ids for entities
+ * */
 export default function createIdsManager() {
   let id = 0;
 

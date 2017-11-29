@@ -1,8 +1,8 @@
-/*
-* Creates ScoreManager
-*
-* ScoreManager serves and manages the score in game
-* */
+/**
+ * Creates ScoreManager
+ *
+ * ScoreManager serves and manages the score in game
+ * */
 export default function createScoreManager() {
   let score = 0;
 

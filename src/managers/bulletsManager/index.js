@@ -1,6 +1,6 @@
 import config from './../../config';
 import createBullet from './bullet';
-
+// TODO refactor ad comment
 export default function createBulletsManager(args) {
   const {
     canvas,

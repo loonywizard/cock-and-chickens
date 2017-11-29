@@ -1,3 +1,7 @@
+// TODO refactor and comment
+
+// TODO remove bullets that are far away from us (not in the scene)
+
 export default function createBullet(args) {
   const {
     id,

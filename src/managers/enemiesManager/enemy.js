@@ -1,15 +1,15 @@
-/*
-* Creates Enemy
-*
-* @param {Object} args.position
-* @param {Object} args.size
-* @param {Number} args.speed
-* @param {Texture} args.texture
-* @param {Number} args.id
-* @param {Number} args.track
-* @param {Number} args.spritesCount
-* @param {Number} args.spriteChangeTime
-* */
+/**
+ * Creates Enemy
+ *
+ * @param {Object} args.position
+ * @param {Object} args.size
+ * @param {Number} args.speed
+ * @param {Texture} args.texture
+ * @param {Number} args.id
+ * @param {Number} args.track
+ * @param {Number} args.spritesCount
+ * @param {Number} args.spriteChangeTime
+ * */
 export default function createEnemy(args) {
   const {
     position,
