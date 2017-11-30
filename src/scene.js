@@ -97,6 +97,7 @@ export default function Scene(store) {
       canvas,
       weaponsManager,
       scoreManager,
+      textures,
     });
 
     aim = createAim({

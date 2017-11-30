@@ -1,3 +1,5 @@
+import config from './config';
+
 /**
  * Creates InformationBoard
  *
@@ -6,13 +8,14 @@
  * @param {Canvas} args.canvas
  * @param {WeaponsManager} args.weaponsManager
  * @param {ScoreManager} args.scoreManager
+ * @param {Textures} args.textures
  * */
-// TODO: add images for coins and ammunition
 export default function createInformationBoard(args) {
   const {
     canvas,
     weaponsManager,
     scoreManager,
+    textures,
   } = args;
 
   const displayInfo = () => {
@@ -21,11 +24,22 @@ export default function createInformationBoard(args) {
     const canvasSize = canvas.getGameSize();
     const { ctx } = canvas;
 
-    ctx.fillStyle = '#000';
-    ctx.font = '30px Arial';
+    ctx.fillStyle = '#ffffff';
+    ctx.font = '38px Courier New';
 
-    ctx.fillText(score, canvasSize.x - 200, 40);
-    ctx.fillText(ammunitionCount, canvasSize.x - 80, 40);
+    ctx.drawImage(
+      textures.coin,
+      0, 0, config.coin.size.x, config.coin.size.y,
+      canvasSize.x - 290, 15, config.coin.size.x, config.coin.size.y,
+    );
+
+    ctx.drawImage(
+      textures.ammunition,
+      canvasSize.x - 170, 10, config.ammunition.size.x, config.ammunition.size.y,
+    );
+
+    ctx.fillText(score, canvasSize.x - 220, 50);
+    ctx.fillText(ammunitionCount, canvasSize.x - 80, 50);
   };
 
   return {
