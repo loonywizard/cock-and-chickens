@@ -1,10 +1,10 @@
 import createThing from './thing';
-import config from '../../config';
+import config from 'config';
 import {
   getRandomInt,
   getRandomAngle,
-} from '../../utils/random';
-import { THING_TYPES } from '../../consts';
+} from 'utils/random';
+import { THING_TYPES } from 'consts';
 
 /**
  * Creates ThingsManager

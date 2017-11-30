@@ -1,4 +1,4 @@
-import { THING_TYPES, ENEMY_TYPES } from './consts';
+import { THING_TYPES, ENEMY_TYPES } from 'consts';
 
 const canvas = {
   width: 900,

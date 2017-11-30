@@ -1,8 +1,8 @@
 import createEnemy from './enemy';
-import config from '../../config';
-import { getRandomInt } from '../../utils/random';
-import { findIntersectionBetweenRayAndSegment } from '../../utils/collisions';
-import { ENEMY_TYPES } from '../../consts';
+import config from 'config';
+import { getRandomInt } from 'utils/random';
+import { findIntersectionBetweenRayAndSegment } from 'utils/collisions';
+import { ENEMY_TYPES } from 'consts';
 
 /**
  * Creates EnemyManager

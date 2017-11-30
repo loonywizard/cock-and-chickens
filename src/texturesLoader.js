@@ -1,5 +1,5 @@
+import config from 'config';
 import { allTexturesWereLoaded } from './actions';
-import config from './config';
 
 /*
 * we need textures for
