@@ -47,10 +47,10 @@ export default function Scene(store) {
     });
 
     canvas = createCanvas({
-      screenSizeController,
       height: config.canvas.height,
       width: config.canvas.width,
       parent: sceneDiv,
+      screenSizeController,
     });
 
     thingsManager = createThingsManager({
@@ -85,9 +85,9 @@ export default function Scene(store) {
     });
 
     strikeManager = createStrikeManager({
-      mouseController,
       getPlayerAngle: player.getAngle,
       getPlayerPosition: player.getPosition,
+      mouseController,
       enemiesManager,
       weaponsManager,
       bulletsManager,

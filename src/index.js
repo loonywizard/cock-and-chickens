@@ -20,9 +20,11 @@ const textures = texturesLoader.loadTextures();
 
 function renderApplication() {
   const state = store.getState();
+
   root.innerHTML = '';
+
   if (state.isGameOver) {
-     const { score } = store.getState();
+    const { score } = store.getState();
     root.appendChild(gameOverMenu.render(score));
   } else if (state.isGame && !state.wereAllTexturesLoaded) {
     root.appendChild(loadingScreen.render());

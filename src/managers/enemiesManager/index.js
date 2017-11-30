@@ -1,50 +1,20 @@
 import createEnemy from './enemy';
 import config from '../../config';
 import { getRandomInt } from '../../utils/random';
+import { findIntersectionBetweenRayAndSegment } from '../../utils/collisions';
+import { ENEMY_TYPES } from '../../consts';
 
-// see http://ncase.me/sight-and-light/
-// TODO: refactor that function
-// TODO: next comment this file
-function findIntersectionBetweenRayAndSegment(ray, segment) {
-  // RAY in parametric: Point + Direction*T1
-  const r_px = ray.a.x;
-  const r_py = ray.a.y;
-  const r_dx = ray.b.x-ray.a.x;
-  const r_dy = ray.b.y-ray.a.y;
-
-  // SEGMENT in parametric: Point + Direction*T2
-  const s_px = segment.a.x;
-  const s_py = segment.a.y;
-  const s_dx = segment.b.x-segment.a.x;
-  const s_dy = segment.b.y-segment.a.y;
-
-  // Are they parallel? If so, no intersect
-  const r_mag = Math.sqrt(r_dx * r_dx + r_dy * r_dy);
-  const s_mag = Math.sqrt(s_dx * s_dx + s_dy * s_dy);
-  if (r_dx / r_mag === s_dx / s_mag && r_dy / r_mag === s_dy / s_mag) { // Directions are the same.
-    return null;
-  }
-
-  // SOLVE FOR T1 & T2
-  // r_px+r_dx*T1 = s_px+s_dx*T2 && r_py+r_dy*T1 = s_py+s_dy*T2
-  // ==> T1 = (s_px+s_dx*T2-r_px)/r_dx = (s_py+s_dy*T2-r_py)/r_dy
-  // ==> s_px*r_dy + s_dx*T2*r_dy - r_px*r_dy = s_py*r_dx + s_dy*T2*r_dx - r_py*r_dx
-  // ==> T2 = (r_dx*(s_py-r_py) + r_dy*(r_px-s_px))/(s_dx*r_dy - s_dy*r_dx)
-  const T2 = (r_dx * (s_py - r_py) + r_dy * (r_px - s_px)) / (s_dx * r_dy - s_dy * r_dx);
-  const T1 = (s_px + s_dx * T2 - r_px) / r_dx;
-
-  // Must be within parametic whatevers for RAY/SEGMENT
-  if (T1 < 0) return null;
-  if (T2 < 0 || T2 > 1) return null;
-
-  // Return the POINT OF INTERSECTION
-  return {
-    x: r_px + r_dx * T1,
-    y: r_py + r_dy * T1,
-  };
-}
-
-// TODO get rid from magic numbers, for example from ways count
+/**
+ * Creates EnemyManager
+ *
+ * EnemyManager can add, remove, update and draw enemies
+ *
+ * @param {Canvas} args.canvas
+ * @param {Textures} args.textures
+ * @param {TimeController} args.timeController
+ * @param {ThingsManager} args.thingsManager
+ * @param {IdsManager} args.idsManager
+ * */
 export default function createEnemiesManager(args) {
   const {
     canvas,
@@ -58,15 +28,6 @@ export default function createEnemiesManager(args) {
 
   let enemyCrossedCanvas = false;
   let createEnemyTimeout;
-
-  const ENEMY_TYPES = {
-    CHICKEN: 'chicken',
-    GRAY_CHICKEN: 'grayChicken',
-  };
-
-  function chooseTrackForNewEnemy() {
-    return getRandomInt(1, 10);
-  }
 
   function getFreeTracks(speed) {
     const tracks = [];

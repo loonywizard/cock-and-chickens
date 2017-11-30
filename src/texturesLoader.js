@@ -12,7 +12,7 @@ import config from './config';
 * SUM = 1 + 1 + 2 + 1 + 1 = 6
 * */
 
-const COUNT_OF_TEXTURES = 5;
+const COUNT_OF_TEXTURES = 6;
 
 export default function TexturesLoader(store) {
   let countOfLoadedTextures = 0;

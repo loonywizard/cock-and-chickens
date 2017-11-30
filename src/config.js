@@ -1,4 +1,4 @@
-import { THING_TYPES } from './consts';
+import { THING_TYPES, ENEMY_TYPES } from './consts';
 
 const canvas = {
   width: 900,
@@ -20,7 +20,7 @@ const player = {
 const config = {
   canvas,
   player,
-  chicken: {
+  [ENEMY_TYPES.CHICKEN]: {
     textureUrl: 'images/white_chicken_texture.png',
     size: { x: 50, y: 61 },
     spritesCount: 2,
@@ -29,7 +29,7 @@ const config = {
     maxSpeed: 0.25,
     health: 1,
   },
-  grayChicken: {
+  [ENEMY_TYPES.GRAY_CHICKEN]: {
     textureUrl: 'images/gray_chicken_texture.png',
     size: { x: 50, y: 61 },
     spritesCount: 2,
@@ -56,6 +56,7 @@ const config = {
   },
   bullet: {
     speed: 5,
+    radius: 10,
   }
 };
 

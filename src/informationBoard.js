@@ -7,6 +7,7 @@
  * @param {WeaponsManager} args.weaponsManager
  * @param {ScoreManager} args.scoreManager
  * */
+// TODO: add images for coins and ammunition
 export default function createInformationBoard(args) {
   const {
     canvas,

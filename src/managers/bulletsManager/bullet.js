@@ -1,13 +1,18 @@
-// TODO refactor and comment
-
-// TODO remove bullets that are far away from us (not in the scene)
-
+/**
+ * Creates Bullet
+ *
+ * @param {Number} args.id
+ * @param {Object} args.position
+ * @param {Number} args.radius
+ * @param {Canvas} args.canvas
+ * @param {Number} args.angle
+ * @param {Number} args.speed
+ * */
 export default function createBullet(args) {
   const {
     id,
     position,
-    size,
-    texture,
+    radius,
     canvas,
     angle,
     speed,
@@ -20,23 +25,26 @@ export default function createBullet(args) {
 
   const draw = () => {
     const { ctx } = canvas;
+
+    // We draw bullets as white circles
     ctx.fillStyle = '#fff';
     ctx.beginPath();
-    ctx.arc(position.x, position.y, 10, 0, Math.PI * 2);
+    ctx.arc(position.x, position.y, radius, 0, Math.PI * 2);
     ctx.stroke();
     ctx.fill();
-    /*ctx.drawImage(
-      texture,
-      size.x * currentSprite, 0, size.x, size.y,
-      position.x - size.x / 2, position.y - size.y / 2, size.x, size.y,
-    );*/
   };
 
+  const getPosition = () => ({ ...position });
+  const getRadius = () => radius;
+  const getAngle = () => angle;
   const getId = () => id;
 
   return {
     getId,
     draw,
     update,
+    getPosition,
+    getAngle,
+    getRadius,
   };
 }
