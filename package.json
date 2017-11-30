@@ -1,7 +1,7 @@
 {
-  "name": "cock-and-chickens",
+  "name": "js-game",
   "version": "1.0.0",
-  "description": "that fucking game",
+  "description": "javascrip game",
   "main": "src/index.js",
   "scripts": {
     "dev": "webpack --config webpack.dev.js --watch",
