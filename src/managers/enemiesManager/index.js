@@ -1,8 +1,8 @@
-import createEnemy from './enemy';
 import config from 'config';
 import { getRandomInt } from 'utils/random';
 import { findIntersectionBetweenRayAndSegment } from 'utils/collisions';
 import { ENEMY_TYPES } from 'consts';
+import createEnemy from './enemy';
 
 /**
  * Creates EnemyManager
@@ -29,16 +29,6 @@ export default function createEnemiesManager(args) {
   let enemyCrossedCanvas = false;
   let createEnemyTimeout;
 
-  function getFreeTracks(speed) {
-    const tracks = [];
-    for (let i = 1; i <= 10; i++) {
-      if (isTrackFree(i, speed)) {
-        tracks.push(i);
-      }
-    }
-    return tracks;
-  }
-
   function isTrackFree(track, speed) {
     for (let i = 0; i < enemies.length; i += 1) {
       const enemy = enemies[i];
@@ -46,17 +36,32 @@ export default function createEnemiesManager(args) {
       const enemySpeed = enemy.getSpeed();
       const enemyPosition = enemy.getPosition();
       const canvasSize = canvas.getGameSize();
-      if (enemyTrack !== track) continue;
-      if (speed <= enemySpeed) continue;
-      if (canvasSize.y / speed <= (canvasSize.y - enemyPosition.y) / enemySpeed) return false;
+      if (enemyTrack !== track) {
+        continue;
+      }
+      if (speed <= enemySpeed) {
+        continue;
+      }
+      if (canvasSize.y / speed <= (canvasSize.y - enemyPosition.y) / enemySpeed) {
+        return false;
+      }
     }
     return true;
   }
 
+  function getFreeTracks(speed) {
+    const tracks = [];
+    for (let i = 1; i <= 10; i += 1) {
+      if (isTrackFree(i, speed)) {
+        tracks.push(i);
+      }
+    }
+    return tracks;
+  }
+
   function chooseTypeForNewEnemy() {
     const randomInt = getRandomInt(0, 20);
-    if (randomInt < 15)
-      return ENEMY_TYPES.CHICKEN;
+    if (randomInt < 15) { return ENEMY_TYPES.CHICKEN; }
     return ENEMY_TYPES.GRAY_CHICKEN;
   }
 
@@ -93,7 +98,7 @@ export default function createEnemiesManager(args) {
 
   createEnemyTimeout = setTimeout(createNewEnemy, 1000);
 
-  function findEnemyById(id) {
+  function findEnemyById(id) { // eslint-disable-line consistent-return
     for (let i = 0; i < enemies.length; i += 1) {
       if (enemies[i].getId() === id) {
         return enemies[i];
@@ -103,7 +108,7 @@ export default function createEnemiesManager(args) {
 
   function deleteEnemyById(id) {
     let index = -1;
-    for (let i = 0; i < enemies.length; i++) {
+    for (let i = 0; i < enemies.length; i += 1) {
       if (id === enemies[i].getId()) {
         index = i;
         break;
@@ -113,7 +118,7 @@ export default function createEnemiesManager(args) {
   }
 
   const update = (deltaTime) => {
-    enemies.forEach(enemy => {
+    enemies.forEach((enemy) => {
       enemy.update(deltaTime);
 
       if (enemy.getPosition().y >= canvas.getGameSize().y) {
@@ -124,7 +129,7 @@ export default function createEnemiesManager(args) {
   };
 
   const drawEnemies = () => {
-    enemies.forEach(enemy => { enemy.draw(canvas.ctx); });
+    enemies.forEach((enemy) => { enemy.draw(canvas.ctx); });
   };
 
   const checkCollisionsWithBullet = ({ angle, position }) => {
@@ -135,60 +140,59 @@ export default function createEnemiesManager(args) {
 
     const intersections = [];
 
-    enemies.forEach(enemy => {
+    enemies.forEach((enemy) => {
       const enemyPosition = enemy.getPosition();
       const enemySize = enemy.getSize();
 
       const segments = [
         {
-          a: { x: enemyPosition.x - enemySize.x / 2,  y: enemyPosition.y - enemySize.y / 2 },
-          b: { x: enemyPosition.x + enemySize.x / 2,  y: enemyPosition.y - enemySize.y / 2 },
+          a: { x: enemyPosition.x - enemySize.x / 2, y: enemyPosition.y - enemySize.y / 2 },
+          b: { x: enemyPosition.x + enemySize.x / 2, y: enemyPosition.y - enemySize.y / 2 },
         },
         {
-          a: { x: enemyPosition.x - enemySize.x / 2,  y: enemyPosition.y - enemySize.y / 2 },
-          b: { x: enemyPosition.x - enemySize.x / 2,  y: enemyPosition.y + enemySize.y / 2 },
+          a: { x: enemyPosition.x - enemySize.x / 2, y: enemyPosition.y - enemySize.y / 2 },
+          b: { x: enemyPosition.x - enemySize.x / 2, y: enemyPosition.y + enemySize.y / 2 },
         },
         {
-          a: { x: enemyPosition.x + enemySize.x / 2,  y: enemyPosition.y - enemySize.y / 2 },
-          b: { x: enemyPosition.x + enemySize.x / 2,  y: enemyPosition.y + enemySize.y / 2 },
+          a: { x: enemyPosition.x + enemySize.x / 2, y: enemyPosition.y - enemySize.y / 2 },
+          b: { x: enemyPosition.x + enemySize.x / 2, y: enemyPosition.y + enemySize.y / 2 },
         },
         {
-          a: { x: enemyPosition.x - enemySize.x / 2,  y: enemyPosition.y + enemySize.y / 2 },
-          b: { x: enemyPosition.x + enemySize.x / 2,  y: enemyPosition.y + enemySize.y / 2 },
+          a: { x: enemyPosition.x - enemySize.x / 2, y: enemyPosition.y + enemySize.y / 2 },
+          b: { x: enemyPosition.x + enemySize.x / 2, y: enemyPosition.y + enemySize.y / 2 },
         },
       ];
 
-      for (let i = 0; i < segments.length; i++) {
-        const intersect = findIntersectionBetweenRayAndSegment(ray,segments[i]);
-        if (!!intersect) {
+      for (let i = 0; i < segments.length; i += 1) {
+        const intersect = findIntersectionBetweenRayAndSegment(ray, segments[i]);
+        if (intersect) {
           const dx = intersect.x - ray.a.x;
           const dy = intersect.y - ray.a.y;
-          const distance = Math.pow(Math.pow(dx, 2) + Math.pow(dy, 2), 0.5);
+          const distance = (dx ** 2 + dy ** 2) ** 0.5;
 
           intersections.push({
             distance,
             enemyId: enemy.getId(),
-          })
+          });
         }
       }
     });
 
     let closestIntersection;
 
-    intersections.forEach(intersection => {
+    intersections.forEach((intersection) => {
       if (!closestIntersection || intersection.distance < closestIntersection.distance) {
         closestIntersection = intersection;
       }
     });
 
     if (closestIntersection) {
-      return  {
+      return {
         enemyId: closestIntersection.enemyId,
         enemyPosition: findEnemyById(closestIntersection.enemyId).getPosition(),
       };
-    } else {
-      return null;
     }
+    return null;
   };
 
   const shotToEnemy = (enemyId) => {

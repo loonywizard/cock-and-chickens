@@ -6,9 +6,9 @@
  * here mouseCoordinates - dx and dy in pixels between top left corner of page and mouse
  * */
 export default function createMouseController() {
-  let mouseCoordinates = {
+  const mouseCoordinates = {
     x: 0,
-    y: 0
+    y: 0,
   };
 
   const moveSubscribers = [];

@@ -1,10 +1,10 @@
-import createThing from './thing';
 import config from 'config';
 import {
   getRandomInt,
   getRandomAngle,
 } from 'utils/random';
 import { THING_TYPES } from 'consts';
+import createThing from './thing';
 
 /**
  * Creates ThingsManager
@@ -36,11 +36,11 @@ export default function createThingsManager(args) {
   }
 
   const drawThings = () => {
-    things.forEach(thing => { thing.draw() });
+    things.forEach((thing) => { thing.draw(); });
   };
 
   const updateThings = (deltaTime) => {
-    things.forEach(thing => {
+    things.forEach((thing) => {
       thing.update(deltaTime);
 
       // remove things, that are under bottom of page
@@ -83,7 +83,7 @@ export default function createThingsManager(args) {
     const result = [];
     const thingsIdsToRemove = [];
 
-    things.forEach(thing => {
+    things.forEach((thing) => {
       if (
         thing.hasCollisionWithRect({
           rectPosition: playerPosition,
@@ -96,7 +96,7 @@ export default function createThingsManager(args) {
     });
 
     // remove things, that have collisions with player
-    thingsIdsToRemove.forEach(thingId => { removeThingById(thingId); });
+    thingsIdsToRemove.forEach((thingId) => { removeThingById(thingId); });
 
     return result;
   };

@@ -15,15 +15,15 @@ export default function createKeyboardController() {
 
   const keyStates = {};
 
-  window.addEventListener('keydown', function(event) {
+  window.addEventListener('keydown', (event) => {
     keyStates[keyCodes[event.keyCode]] = true;
   });
 
-  window.addEventListener('keyup', function(event) {
+  window.addEventListener('keyup', (event) => {
     keyStates[keyCodes[event.keyCode]] = false;
   });
 
-  const isKeyPressed = (keyName) => !!keyStates[keyName];
+  const isKeyPressed = keyName => !!keyStates[keyName];
 
   return {
     isKeyPressed,

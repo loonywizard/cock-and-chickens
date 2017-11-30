@@ -24,7 +24,7 @@ export default function TexturesLoader(store) {
     }
   }
 
-  this.loadTextures = function () {
+  this.loadTextures = function loadTextures() {
     const textures = {
       player: new Image(),
       chicken: new Image(),
@@ -34,11 +34,11 @@ export default function TexturesLoader(store) {
       aim: new Image(),
     };
 
-    for (let key in textures) {
+    Object.keys(textures).forEach((key) => {
       textures[key].src = config[key].textureUrl;
       textures[key].onload = incrementCountOfLoaedTextures;
-    }
+    });
 
     return textures;
-  }
+  };
 }

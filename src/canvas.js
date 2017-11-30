@@ -7,7 +7,9 @@
  * @param {DOMNode} args.parent
  * */
 export default function createCanvas(args) {
-  const { screenSizeController, height, width, parent } = args;
+  const {
+    screenSizeController, height, width, parent,
+  } = args;
   const canvas = document.createElement('canvas');
   const ctx = canvas.getContext('2d');
   const offset = {};

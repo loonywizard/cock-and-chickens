@@ -26,8 +26,8 @@ export function findIntersectionBetweenRayAndSegment(ray, segment) {
   const segmentDy = segment.b.y - segment.a.y;
 
   // Are they parallel? If so, no intersect
-  const rayHypotenuse = Math.sqrt(Math.pow(rayDx, 2) + Math.pow(rayDy, 2));
-  const segmentHypotenuse = Math.sqrt(Math.pow(segmentDx, 2) + Math.pow(segmentDy, 2));
+  const rayHypotenuse = (rayDx ** 2 + rayDy ** 2) ** 0.5;
+  const segmentHypotenuse = (segmentDx ** 2 + segmentDy ** 2) ** 0.5;
   const areParallel = (
     rayDx / rayHypotenuse === segmentDx / segmentHypotenuse &&
     rayDy / rayHypotenuse === segmentDy / segmentHypotenuse

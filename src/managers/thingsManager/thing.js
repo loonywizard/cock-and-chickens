@@ -56,14 +56,12 @@ export default function createThing(args) {
   const getPosition = () => ({ ...position });
   const getSize = () => ({ ...size });
 
-  const hasCollisionWithRect = ({ rectPosition, rectSize }) => {
-    return (
-      position.x + size.x / 2 >= rectPosition.x - rectSize.x / 2
+  const hasCollisionWithRect = ({ rectPosition, rectSize }) => (
+    position.x + size.x / 2 >= rectPosition.x - rectSize.x / 2
       && position.x - size.x / 2 <= rectPosition.x + rectSize.x / 2
       && position.y + size.y / 2 >= rectPosition.y - rectSize.y / 2
       && position.y - size.y / 2 <= rectPosition.y + rectSize.y / 2
-    );
-  };
+  );
 
   return {
     getId,

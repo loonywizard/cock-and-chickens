@@ -5,7 +5,7 @@ export default function GameMenu(store) {
     store.dispatch(startGame());
   }
 
-  this.render = function () {
+  this.render = function render() {
     const div = document.createElement('div');
     const playButton = document.createElement('div');
 

@@ -27,6 +27,6 @@ export const RETURN_TO_MENU = 'RETURN_TO_MENU';
 export const ALL_TEXTURES_WERE_LOADED = 'ALL_TEXTURES_WERE_LOADED';
 
 export const startGame = () => ({ type: START_GAME });
-export const stopGame = (score) => ({ type: STOP_GAME, payload: { score }});
+export const stopGame = score => ({ type: STOP_GAME, payload: { score } });
 export const returnToMenu = () => ({ type: RETURN_TO_MENU });
 export const allTexturesWereLoaded = () => ({ type: ALL_TEXTURES_WERE_LOADED });

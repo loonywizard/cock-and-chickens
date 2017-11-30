@@ -9,7 +9,7 @@ export default function GameOverMenu(store) {
     store.dispatch(returnToMenu());
   }
 
-  this.render = function (score) {
+  this.render = function render(score) {
     const div = document.createElement('div');
     div.classList.add('game-over-menu');
 

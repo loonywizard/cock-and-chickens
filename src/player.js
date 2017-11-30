@@ -34,8 +34,6 @@ export default function createPlayer(args) {
   const getPosition = () => ({ ...position });
   const getSize = () => ({ ...size });
 
-  mouseController.subscribeForMouseMove(calculateAngle);
-
   function calculateAngle() {
     const canvasOffset = canvas.getOffset();
     const canvasGameSize = canvas.getGameSize();
@@ -47,6 +45,8 @@ export default function createPlayer(args) {
     const dy = mouseCoordinates.y * coefficientY - (canvasOffset.y * coefficientY + position.y);
     angle = Math.atan2(dy, dx);
   }
+
+  mouseController.subscribeForMouseMove(calculateAngle);
 
   const draw = () => {
     const { ctx } = canvas;
@@ -107,14 +107,14 @@ export default function createPlayer(args) {
       getPlayerSize: getSize,
     });
 
-    things.forEach(thingEffect => {
+    things.forEach((thingEffect) => {
       if (thingEffect.ammunitionCount) {
         weaponsManager.addAmmunition(thingEffect.ammunitionCount);
       }
       if (thingEffect.coinsCount) {
         scoreManager.increaseScore(thingEffect.coinsCount);
       }
-    })
+    });
   };
 
   return {

@@ -17,7 +17,6 @@ import { stopGame } from './actions';
 import config from './config';
 
 export default function Scene(store) {
-
   const sceneDiv = document.createElement('div');
   const screenSizeController = createScreenSizeController();
   const keyboardController = createKeyboardController();
@@ -28,7 +27,7 @@ export default function Scene(store) {
   let player;
   let enemiesManager;
   let thingsManager;
-  let strikeManager;
+  let strikeManager; // eslint-disable-line no-unused-vars
   let weaponsManager;
   let bulletsManager;
   let idsManager;
@@ -36,7 +35,7 @@ export default function Scene(store) {
   let informationBoard;
   let aim;
 
-  this.init = function (textures) {
+  this.init = function init(textures) {
     sceneDiv.innerHTML = '';
 
     idsManager = createIdsManager();
@@ -135,12 +134,12 @@ export default function Scene(store) {
     requestAnimationFrame(gameLoop);
   }
 
-  this.render = function () {
+  this.render = function render() {
     return sceneDiv;
   };
 
-  this.startGame = function () {
+  this.startGame = function startGame() {
     timeController.start();
     gameLoop();
-  }
+  };
 }

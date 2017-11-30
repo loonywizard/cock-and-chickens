@@ -57,7 +57,7 @@ const config = {
   bullet: {
     speed: 5,
     radius: 10,
-  }
+  },
 };
 
 export default config;

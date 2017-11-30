@@ -15,7 +15,7 @@ export default function createBulletsManager(args) {
     canvas,
     idsManager,
   } = args;
-  
+
   const bullets = [];
 
   function removeBulletById(id) {
@@ -29,11 +29,11 @@ export default function createBulletsManager(args) {
   }
 
   const drawBullets = () => {
-    bullets.forEach(bullet => { bullet.draw() });
+    bullets.forEach((bullet) => { bullet.draw(); });
   };
 
   const updateBullets = (deltaTime) => {
-    bullets.forEach(bullet => {
+    bullets.forEach((bullet) => {
       bullet.update(deltaTime);
 
       // remove bullets, that are out of screen

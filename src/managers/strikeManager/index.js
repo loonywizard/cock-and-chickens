@@ -38,7 +38,7 @@ export default function createStrikeManager(args) {
       { position: { ...position }, angle: angle - Math.PI / 50 },
       { position: { ...position }, angle },
       { position: { ...position }, angle: angle + Math.PI / 50 },
-    ].map((bullet) => bulletsManager.addBullet(bullet));
+    ].map(bullet => bulletsManager.addBullet(bullet));
 
     /*
     * Here I'm searching for bullets collisions with enemies
@@ -49,23 +49,27 @@ export default function createStrikeManager(args) {
     * If we have the collision, count distance and then time, in which bullet will reach enemy
     * And just set timeout for that time and kill enemy
     * */
-    bullets.forEach(bullet => {
-      const position = bullet.getPosition();
-      const angle = bullet.getAngle();
+    bullets.forEach((bullet) => {
+      const bulletPosition = bullet.getPosition();
+      const bulletAngle = bullet.getAngle();
 
       // intersection is the nearest enemy on the bullet track (or it is null)
-      const intersection = enemiesManager.checkCollisionsWithBullet({ position, angle });
+      const intersection = enemiesManager.checkCollisionsWithBullet({
+        position: bulletPosition,
+        angle: bulletAngle,
+      });
+
       if (intersection !== null) {
         const { enemyPosition, enemyId } = intersection;
-        const dx = position.x - enemyPosition.x;
-        const dy = position.y - enemyPosition.y;
-        const distance = Math.pow(Math.pow(dx, 2) + Math.pow(dy, 2), 0.5);
+        const dx = bulletPosition.x - enemyPosition.x;
+        const dy = bulletPosition.y - enemyPosition.y;
+        const distance = (dx ** 2 + dy ** 2) ** 0.5;
         const time = distance / bulletSpeed;
 
         setTimeout(() => {
           enemiesManager.shotToEnemy(enemyId);
           bulletsManager.removeBulletById(bullet.getId());
-        }, time)
+        }, time);
       }
     });
   }
