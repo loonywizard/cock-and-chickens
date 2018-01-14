@@ -25,7 +25,7 @@ export default function createInformationBoard(args) {
     const { ctx } = canvas;
 
     ctx.fillStyle = '#ffffff';
-    ctx.font = '38px Courier New';
+    ctx.font = '900 38px Courier New';
 
     ctx.drawImage(
       textures.coin,

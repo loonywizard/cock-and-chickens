@@ -2,9 +2,16 @@ html, body {
   overflow: hidden;
   margin: 0;
   padding: 0;
-  background-image: url(./images/background.jpg);
+  background-image: url(./images/bg.png);
   background-repeat: repeat repeat;
   background-size: inherit;
+  font-family:
+    -apple-system,
+    system-ui,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    "Roboto",
+    "Helvetica Neue", Arial, sans-serif;
 }
 
 canvas {
@@ -16,12 +23,18 @@ canvas {
 }
 
 .button {
-  background: #185830;
-  border: 3px solid #ffffff;
-  border-radius: 10px;
+  background: #124440;
   margin: 30px 0;
   padding: 5px 70px;
   cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.button:hover {
+  background: #17635d;
+  -webkit-box-shadow: 0px 0px 27px -3px rgba(0,0,0,1);
+  -moz-box-shadow: 0px 0px 27px -3px rgba(0,0,0,1);
+  box-shadow: 0px 0px 27px -3px rgba(0,0,0,1);
 }
 
 .game-menu,
@@ -31,7 +44,13 @@ canvas {
   align-items: center;
   min-height: 100vh;
   color: white;
-  font-family: sans-serif;
   font-size: 3rem;
   flex-direction: column;
+}
+
+.game-over-score {
+  font-weight: 900;
+  background: #123;
+  padding: 0 20px;
+  border-radius: 10px;
 }
